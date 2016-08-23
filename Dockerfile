@@ -10,13 +10,20 @@ RUN sudo apt-get install software-properties-common -y
 
 RUN sudo add-apt-repository -y ppa:hvr/ghc
 
-# Now we install the appropriate version of stack as described in
+# We enable the fpcomplete repository for haskell stack.
+# The appropriate version of stack as described in
 # https://docs.haskellstack.org/en/stable/install_and_upgrade/#ubuntu
 
-RUN sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 575159689BEFB442 # Get the fpcomplete keys
-RUN echo 'deb http://download.fpcomplete.com/ubuntu trusty main'|sudo tee /etc/apt/sources.list.d/fpco.list
+# Add keys of fpcomplete.
+RUN sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 \
+                     --recv-keys 575159689BEFB442
+
+# Add their repository to the source list.
+RUN echo 'deb http://download.fpcomplete.com/ubuntu trusty main' \
+  | sudo tee /etc/apt/sources.list.d/fpco.list
 
 # Update apt- packages.
+RUN sudo apt-get update -y
 
-RUN sudo apt-get update
-RUN sudo apt-get install stack -y  # Install Haskell stack.
+# Install haskell stack.
+RUN sudo apt-get install stack -y
