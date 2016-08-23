@@ -8,8 +8,8 @@ the following additional installations
 
 2. [Haskell Stack][stack] is installed.
 
-
-This docker image is suitable for use in CI setting where a haskell
-environment is required.
+This docker image was created mainly to use a docker based CI like
+http://shippable.com with a convenient haskell environment is
+required.
 
 [stack]: <https://docs.haskellstack.org/> "The Haskell Stack"
