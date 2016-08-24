@@ -4,6 +4,11 @@ MAINTAINER Piyush P Kurur <ppk@cse.iitk.ac.in>
 RUN sudo apt-get update -y
 RUN sudo apt-get install software-properties-common -y
 
+# Generate the locales.
+
+RUN sudo locale-gen en_US en_US.UTF-8
+RUN sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+
 # We enable the repository of hvr so that we can access any of the
 # many versions of ghc that he provides. See
 # https://github.com/hvr/multi-ghc-travis
