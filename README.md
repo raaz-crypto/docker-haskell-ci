@@ -10,7 +10,7 @@ the following additional installations
 
 This docker image was created mainly for use in a docker based CI like
 http://shippable.com. It sets up a convenient haskell environment
-where we have the haskell stack installed. If need be, any og the
+where we have the haskell stack installed. If need be, any of the
 multiple versions of ghc and cabal-install supported by hvr's
 repository can be installed.
 
