@@ -25,5 +25,9 @@ RUN echo 'deb http://download.fpcomplete.com/ubuntu trusty main' \
 # Update apt- packages.
 RUN sudo apt-get update -y
 
+# Install haskell some basic packages that are required by the haskell
+# environment.
+RUN sudo apt-get install curl wget hlint -y
+
 # Install haskell stack.
 RUN sudo apt-get install stack -y
