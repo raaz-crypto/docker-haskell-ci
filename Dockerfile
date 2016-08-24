@@ -27,7 +27,7 @@ RUN sudo apt-get update -y
 
 # Install haskell some basic packages that are required by the haskell
 # environment.
-RUN sudo apt-get install curl wget hlint -y
+RUN sudo apt-get install curl wget hlint tar gzip -y
 
 # Install haskell stack.
 RUN sudo apt-get install stack -y
