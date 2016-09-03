@@ -1,6 +1,13 @@
 FROM ubuntu:14.04
 MAINTAINER Piyush P Kurur <ppk@cse.iitk.ac.in>
 
+# Versions of some haskell packages to pre-install
+
+# GHC Versions to install
+ENV GHCVER   "head 8.0.1 7.10.3 7.8.4 7.6.3"
+# cabal-install version
+ENV CABALVER "1.24 1.22 1.20"
+
 RUN sudo apt-get update -y
 RUN sudo apt-get install software-properties-common -y
 
@@ -30,9 +37,16 @@ RUN echo 'deb http://download.fpcomplete.com/ubuntu trusty main' \
 # Update apt- packages.
 RUN sudo apt-get update -y
 
-# Install haskell some basic packages that are required by the haskell
+# Install some basic packages that are required by the haskell
 # environment.
 RUN sudo apt-get install curl wget hlint tar gzip -y
+
+
+# Installing versions of ghc
+RUN for ver in `echo $GHCVER | tr " " "\n"`; do sudo apt-get install "ghc-$ver" -y; done
+
+# Installing versions of cabal install
+RUN for ver in `echo $CABALVER | tr " " "\n"`; do sudo apt-get install "cabal-install-$ver" -y; done
 
 # Install haskell stack.
 RUN sudo apt-get install stack -y
