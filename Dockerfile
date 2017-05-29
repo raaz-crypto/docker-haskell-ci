@@ -43,6 +43,9 @@ RUN sudo apt-get update -y
 RUN sudo apt-get install curl wget hlint tar gzip -y
 
 
+# Installing the z3 sat solver.
+RUN sudo apt-get install z3 -y
+
 # Installing versions of ghc
 RUN for ver in `echo $GHCVER | tr " " "\n"`; do sudo apt-get install "ghc-$ver" -y; done
 
