@@ -27,7 +27,7 @@ RUN sudo apt-get update -y
 
 # Install some basic packages that are required by the haskell
 # environment.
-RUN sudo apt-get git install curl wget hlint tar gzip -y
+RUN sudo apt-get install git curl wget hlint tar gzip -y
 
 
 # Installing the z3 sat solver.
