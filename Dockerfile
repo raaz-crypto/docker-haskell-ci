@@ -4,9 +4,9 @@ MAINTAINER Piyush P Kurur <ppk@cse.iitk.ac.in>
 # Versions of some haskell packages to pre-install
 
 # GHC Versions to install
-ENV GHCVER   "head 8.0.2 8.0.1 7.10.3 7.8.4 7.6.3"
+ENV GHCVER   "8.4.1"
 # cabal-install version
-ENV CABALVER "1.24 1.22 1.20"
+ENV CABALVER "2.2"
 
 RUN sudo apt-get update -y
 RUN sudo apt-get install software-properties-common -y
