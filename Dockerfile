@@ -34,10 +34,5 @@ RUN sudo apt-get update -y
 
 # Install some basic packages that are required by the haskell
 # environment.
-RUN sudo apt-get install git curl wget hlint tar gzip -y
-
-# Installing versions of ghc
-RUN for ver in `echo $GHCVER | tr " " "\n"`; do sudo apt-get install "ghc-$ver" -y; done
-
-# Installing versions of cabal install
-RUN for ver in `echo $CABALVER | tr " " "\n"`; do sudo apt-get install "cabal-install-$ver" -y; done
+RUN sudo apt-get install git curl wget hlint tar gzip bash "ghc-$GHCVER" "cabal-install-$CABALVER" -y
+RUN echo export PATH=/opt/ghc/$GHCVER/bin:/opt/cabal/$CABALVER/bin:$PATH > $HOME/.bash_profile
