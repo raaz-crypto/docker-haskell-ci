@@ -1,5 +1,5 @@
 FROM ubuntu:14.04
-MAINTAINER Piyush P Kurur <ppk@cse.iitk.ac.in>
+MAINTAINER Piyush P Kurur <ppk@iitpkd.ac.in>
 
 # Versions of some haskell packages to pre-install
 
