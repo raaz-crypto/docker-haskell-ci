@@ -22,24 +22,12 @@ RUN sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
 
 RUN sudo add-apt-repository -y ppa:hvr/ghc
 
-# We enable the fpcomplete repository for haskell stack.
-# The appropriate version of stack as described in
-# https://docs.haskellstack.org/en/stable/install_and_upgrade/#ubuntu
-
-# Add keys of fpcomplete.
-RUN sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 \
-                     --recv-keys 575159689BEFB442
-
-# Add their repository to the source list.
-RUN echo 'deb http://download.fpcomplete.com/ubuntu trusty main' \
-  | sudo tee /etc/apt/sources.list.d/fpco.list
-
 # Update apt- packages.
 RUN sudo apt-get update -y
 
 # Install some basic packages that are required by the haskell
 # environment.
-RUN sudo apt-get install curl wget hlint tar gzip -y
+RUN sudo apt-get git install curl wget hlint tar gzip -y
 
 
 # Installing the z3 sat solver.
@@ -50,6 +38,3 @@ RUN for ver in `echo $GHCVER | tr " " "\n"`; do sudo apt-get install "ghc-$ver" 
 
 # Installing versions of cabal install
 RUN for ver in `echo $CABALVER | tr " " "\n"`; do sudo apt-get install "cabal-install-$ver" -y; done
-
-# Install haskell stack.
-RUN sudo apt-get install stack -y
