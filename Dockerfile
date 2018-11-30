@@ -35,4 +35,15 @@ RUN sudo apt-get update -y
 # Install some basic packages that are required by the haskell
 # environment.
 RUN sudo apt-get install git curl wget hlint tar gzip bash "ghc-$GHCVER" "cabal-install-$CABALVER" -y
+
 RUN echo export PATH=/opt/ghc/$GHCVER/bin:/opt/cabal/$CABALVER/bin:$PATH > $HOME/.bash_profile
+
+RUN sudo apt-get install opam
+RUN opam
+RUN opam init -y
+RUN opam repo add coq-released https://coq.inria.fr/opam/released
+RUN opam update -y
+RUN opam switch set 4.05.0 -y
+RUN opam install coq."$COQVER" -y --verbose
+RUN opam pin add coq "$COQVER" -y
+RUN opam install coq-color -y --verbose
