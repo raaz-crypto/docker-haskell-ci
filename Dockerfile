@@ -21,7 +21,6 @@ RUN sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
 # https://github.com/hvr/multi-ghc-travis
 
 RUN sudo add-apt-repository -y ppa:hvr/ghc
-RUN sudo add-apt-repository -y ppa:hvr/z3
 
 # We enable the fpcomplete repository for haskell stack.
 # The appropriate version of stack as described in
