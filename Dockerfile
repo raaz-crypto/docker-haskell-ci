@@ -32,13 +32,18 @@ RUN sudo add-apt-repository -y ppa:avsm/ppa
 
 RUN sudo apt-get update -y
 
-# Install some basic packages that are required by the haskell
-# environment.
-RUN sudo apt-get install git curl wget hlint tar gzip bash "ghc-$GHCVER" "cabal-install-$CABALVER" -y
+# Install some basic packages
 
+RUN sudo apt-get install -y git curl wget hlint tar gzip bash make
+
+# Haskell related stuff
+
+RUN sudo apt-get install -y "ghc-$GHCVER" "cabal-install-$CABALVER"
 RUN echo export PATH=/opt/ghc/$GHCVER/bin:/opt/cabal/$CABALVER/bin:$PATH > $HOME/.bash_profile
 
-RUN sudo apt-get install opam
+# Coq and friends.
+
+RUN sudo apt-get install opam m4 -y
 RUN opam
 RUN opam init -y
 RUN opam repo add coq-released https://coq.inria.fr/opam/released
