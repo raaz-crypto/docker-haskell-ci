@@ -52,3 +52,11 @@ RUN opam switch set 4.05.0 -y
 RUN opam install coq."$COQVER" -y --verbose
 RUN opam pin add coq "$COQVER" -y
 RUN opam install coq-color -y --verbose
+
+
+# Setting up repositories.
+
+RUN cd root
+RUN cabal update
+RUN git clone --recursive https://github.com/raaz-crypto/raaz.git
+RUN git clone https://github.com/raaz-crypto/verse-coq.git
