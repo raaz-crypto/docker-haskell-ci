@@ -57,7 +57,18 @@ RUN opam install coq-color -y --verbose
 # Setting up repositories.
 
 ENV PATH  "/opt/ghc/$GHCVER/bin:/opt/cabal/$CABALVER/bin:$PATH"
-RUN cd root
 RUN cabal update
+WORKDIR /root
 RUN git clone --recursive https://github.com/raaz-crypto/raaz.git
 RUN git clone https://github.com/raaz-crypto/verse-coq.git
+
+# Building and running the raaz benchmarks.
+
+WORKDIR /root/raaz
+RUN cabal new-configure --flags=-linux-getrandom --flags=native
+RUN cabal new-bench
+
+WORKDIR /root/verse-coq/
+RUN eval $(opam config env) && ./configure.sh
+WORKDIR /root/verse-coq/crypto-lib
+RUN eval $(opam config env) && make
