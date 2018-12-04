@@ -56,6 +56,7 @@ RUN opam install coq-color -y --verbose
 
 # Setting up repositories.
 
+ENV PATH  "/opt/ghc/$GHCVER/bin:/opt/cabal/$CABALVER/bin:$PATH"
 RUN cd root
 RUN cabal update
 RUN git clone --recursive https://github.com/raaz-crypto/raaz.git
